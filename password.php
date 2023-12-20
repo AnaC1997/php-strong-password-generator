@@ -2,27 +2,40 @@
 
 include __DIR__ . "/functions.php";
 // Array per ottenere la password
-$lettereMaiuscoleMinuscole = str_split('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ');
-$numeri = str_split('0123456789');
-$simboli = str_split('!@#$%^&*()_+{}|:"<>?-=[]\';,./');
+$lettereMaiuscoleMinuscole = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+$numeri = '0123456789';
+$simboli = '!@#$%^&*()_+{}|:"<>?-=[]\';,./';
+
 
 //Verifica se l'utente inserisce la password
 
-if (isset($_GET["lunghezza"])) {
+if (isset($_GET["lunghezza"])){
     $lunghezza = $_GET["lunghezza"];
-    if ($password = generaPasswordOption($lettereMaiuscoleMinuscole, $lunghezza)) {
-        echo "Password generata lettere: $password";
-    } elseif ($password = generaPasswordOption($numeri, $lunghezza)) {
-        echo "Password generata numeri: $password";
-    } elseif ($password = generaPasswordOption($simboli, $lunghezza)) {
-        echo "Password generata simboli: $password";
-    } elseif ($password = generaPassword($lettereMaiuscoleMinuscole, $numeri, $simboli, $lunghezza)) {
-        echo "Password generata: $password";
+
+    $caratteriPossibili = "";
+
+    if (isset($_GET["lettereMaiuscoleMinuscole"])) {
+        $caratteriPossibili .= $lettereMaiuscoleMinuscole;
     }
 
+    if (isset($_GET["numeri"])) {
+        $caratteriPossibili .= $numeri;
+    }
+
+    if (isset($_GET["simboli"])) {
+        $caratteriPossibili .= $simboli;
+    }
+
+    if ($caratteriPossibili) {
+        $password = generaPassword($caratteriPossibili, $lunghezza);
+        echo "Password generata: $password";
+    } else {
+        echo "Seleziona almeno un'opzione.";
+    }
 } else {
-    echo "Inserisce la lunghezza della password.";
+    echo "Inserisci la lunghezza della password.";
 }
+
 
 
 ?>

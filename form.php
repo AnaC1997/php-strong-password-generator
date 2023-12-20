@@ -14,33 +14,34 @@
     <div class="container mt-5">
         <h1 class="text-center p-3">Strong Password Generador</h1>
         <h6 class="text-center p-3">Genera una password sicura</h6>
-        <form action="password.php">
+        <form action="password.php" method="get">
             <div class="d-flex mb-3">
 
-             <!--Imput lunghezza-->
+                <!--Imput lunghezza-->
                 <input class="form-control me-2" type="text" placeholder="Inserisci la lunghezza della password"
                     name="lunghezza" required>
                 <button class="btn btn-outline-success bg-danger text-white" type="submit">Genera Password</button>
             </div>
-           <!--Opzione Lettere-->
+            <!--Opzione Lettere-->
             <div class="form-check mb-3">
-                <input name="lettereMaiuscoleMinuscole"  class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="lettereMaiuscoleMinuscole" class="form-check-input" type="checkbox" value=""
+                    id="lettereCheckbox">
                 <label class="form-check-label" for="flexCheckDefault">
                     Lettere
                 </label>
             </div>
 
-               <!--Opzione Numeri-->
+            <!--Opzione Numeri-->
             <div class="form-check mb-3">
-                <input name="numeri" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="numeri" class="form-check-input" type="checkbox" value="" id="numeriCheckbox">
                 <label class="form-check-label" for="flexCheckDefault">
                     Numeri
                 </label>
             </div>
 
-             <!--Opzione Simboli-->
+            <!--Opzione Simboli-->
             <div class="form-check mb-3">
-                <input name="simboli" class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <input name="simboli" class="form-check-input" type="checkbox" value="" id="simboliCheckbox">
                 <label class="form-check-label" for="flexCheckDefault">
                     Simboli
                 </label>
